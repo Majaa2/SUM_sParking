@@ -10,8 +10,13 @@ export default {
         })
     },
     getWeatherData(){
+<<<<<<< HEAD
         return axios.get('http://api.openweathermap.org/data/2.5/weather?q=Mostar&appid=d89ef06d2bccbb7f7fa14fa0bff0eb9e').then(response=>{
             if(response.data){    
+=======
+        return axios.get('https://api.openweathermap.org/data/2.5/weather?q=Mostar&appid=d89ef06d2bccbb7f7fa14fa0bff0eb9e').then(response=>{
+            if(response && response.status == 200){    
+>>>>>>> 5e4b83e96e596f40f26c3325320182df336cc2ed
                 let temp =response.data.main.temp - 273.15
                 let weatherData={
                     city: response.data.name,

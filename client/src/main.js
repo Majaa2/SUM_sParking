@@ -44,7 +44,7 @@ Vue.prototype.$axios.interceptors.response.use((response) => {
 }, function (error) {
   if (error.response.status === 401) {
     Vm.$store.dispatch('logout');
-    Vm.$router.push('/auth/login');
+    Vm.$router.push('/login');
     localStorage.clear();
  
   }
