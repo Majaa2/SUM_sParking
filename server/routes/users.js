@@ -76,62 +76,6 @@ module.exports = function (app) {
             }
         });
     });
-    router.post('/changeLang', ensureAuthenticated, isAllowed('canChangeLang'), (req, res)=>{
-        db.user.update({
-            lang: req.body.lang
-        }, {
-            where: {id: req.body.id},
-        }).then((result) => {
-            if(result){
-                res.json({
-                    success: true,
-                    data:{
-                        data:result,
-                        msg: "Language changed"
-                    }
-                });
-            } else {
-                res.json({
-                    success: false,
-                    data: {
-                        msg: 'Could not change language!'
-                    }
-                });
-            }
-        })
-    });
-
-    //Edit user
-
-    router.post('/editUser/', ensureAuthenticated, isAllowed('canEditUser'), (req, res) => {
-        db.user.update({
-            username: req.body.username,
-            email: req.body.email,
-            role_id: req.body.role_id
-        }, {
-            where: { id: req.body.id },
-            returning: true,
-            plain: true
-        }).then((result) => {
-            if (result) {
-                res.json({
-                    success: true,
-                    data: {
-                        data: result,
-                        msg: 'toast.users.edit.succ'
-                    }
-                });
-            } else {
-                res.json({
-                    success: false,
-                    data: {
-                        msg: 'toast.users.edit.err'
-                    }
-                });
-            }
-        })
-    });
-
     router.post('/deleteUser/', ensureAuthenticated, isAllowed('canDeleteUser'), (req, res) => {
         db.sequelize.query('delete from users where id = :ID'
             ,{
@@ -143,14 +87,14 @@ module.exports = function (app) {
                     success: true,
                     data: {
                         data: result,
-                        msg: 'toast.users.delete.succ'
+                        msg: 'User has been deleted'
                     }
                 });
             } else {
                 res.json({
                     success: false,
                     data: {
-                        msg: 'toast.users.delete.err'
+                        msg: 'There has been an error while deleting a user'
                     }
                 });
             }
@@ -158,7 +102,7 @@ module.exports = function (app) {
             res.json({
                 success: false,
                 data: {
-                    msg: 'toast.users.delete.dberr',
+                    msg: 'There has been an error while deleting a user',
                     error: err
                 }
             });
