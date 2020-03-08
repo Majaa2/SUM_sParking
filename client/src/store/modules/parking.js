@@ -64,6 +64,9 @@ export default {
         logout(context) {
             context.commit("LOGOUT");
         },
+        authenticate(context) {
+            context.commit("LOGIN");
+        },
         async userLogin(context, user) {
 
             let loggedUser = await ParkingService.userLogin(user)
