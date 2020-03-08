@@ -20,11 +20,11 @@
                   size="36px"
                   color="blue"
                 >
-                  {{currentUser.username.substring(0,1).toUpperCase()}}
+                  {{user.username[0].toUpperCase()}}
                 </v-avatar>
                 </v-col>
                 <v-col cols="8" class="pl-7">
-                  <span> {{currentUser.username}} </span>
+                  <span> {{user.username}} </span>
                 </v-col>
               
             </v-row>
@@ -45,8 +45,8 @@
 import {mapState, mapGetters} from 'vuex'
 export default {
     name : 'user-info',
+    props:["user"],
     computed:{
-      ...mapGetters('parking',['currentUser'])
     },
     data(){
         return{

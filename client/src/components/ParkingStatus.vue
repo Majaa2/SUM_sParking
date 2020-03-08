@@ -9,7 +9,7 @@
               height="300"
               dark
             >
-              <v-card-title class="headline">Unlimited music now</v-card-title>
+              <v-card-title class="headline">{{selectedParking.title}}</v-card-title>
   
               <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.</v-card-subtitle>
   
@@ -20,11 +20,16 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
+  computed:{
+    ...mapState('parking',['selectedParking'])
+  },
     data() {
         return{
 
         }
     }
+    
 }
 </script>

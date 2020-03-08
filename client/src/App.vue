@@ -14,8 +14,11 @@ export default {
     //
   }),
   mounted(){
+    
     this.$store.dispatch('parking/getWeatherData')
     this.$store.dispatch('parking/authenticate')
-  }
+    
+  },
+  
 };
 </script>

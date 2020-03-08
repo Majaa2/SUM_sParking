@@ -14,8 +14,10 @@ export default {
         isConnected: false,
         socketMessage: '',
         weatherData: {},
+        parkingData: [],
         authenticated: false,
-        user: {}
+        user: {},
+        selectedParking: {}
     },
     getters: {
         isAuth: state => {
@@ -24,6 +26,9 @@ export default {
         currentUser(state) {
             return state.user;
         },
+        returnParkingData(state){
+            return state.parkingData;
+        }
     },
     mutations: {
         AUTHENTICATE(state) {
@@ -50,12 +55,18 @@ export default {
         },
         SET_WEATHER_DATA(state, data){
             state.weatherData = data
+        },
+        SET_PARKING_DATA(state,data){
+            state.parkingData = data
+        },
+        SET_SELECTED_PARKING(state,data){
+            state.selectedParking = data
         }
     },
     actions: {
-        async getParkingData() {
+        async getParkingData(context) {
             let data = await ParkingService.getParkingSpaces();
-            // console.log(data)
+            context.commit('SET_PARKING_DATA',data)
         },
         async getWeatherData(context) {
             let data = await ParkingService.getWeatherData();
@@ -66,6 +77,9 @@ export default {
         },
         authenticate(context) {
             context.commit("LOGIN");
+        },
+        selectParking(context,data){
+            context.commit("SET_SELECTED_PARKING",data)
         },
         async userLogin(context, user) {
 
