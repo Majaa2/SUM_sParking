@@ -36,6 +36,28 @@ Vue.prototype.$axios = axios.create({
   baseURL: "/api"
 });
 
+Vue.prototype.$axios.defaults.headers.common['Authorization'] = localStorage.getItem('id_token');
+Vue.prototype.$axios.interceptors.response.use((response) => {
+  return response;
+}, function (error) {
+  if (error.response.status === 401) {
+    Vm.$store.dispatch('logout');
+    Vm.$router.push('/auth/login');
+    localStorage.clear();
+ 
+  }
+  else if (error.response.status === 403){
+    Vm.$router.push('/403');
+  }
+  else if(error.response.status === 500){
+    Vm.$toasted.global.err({
+      message : i18n.t('conn.err')
+    });
+  }
+  return Promise.reject(error.response);
+});
+
+
 Vue.config.productionTip = false
 
 new Vue({

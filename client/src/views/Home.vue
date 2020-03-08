@@ -14,7 +14,6 @@ export default {
   }),
   created(){
     this.$store.dispatch('parking/getWeatherData')
-     this.$store.dispatch('parking/getParkingData')
   }
 };
 </script>
