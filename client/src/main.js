@@ -5,6 +5,15 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import socketio from 'socket.io-client';
 import VueSocketIO from 'vue-socket.io';
+import * as VueGoogleMaps from "vue2-google-maps";
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyBTXC_FeumA9GLn-blssEZx9dZBy63gi6Y",
+    libraries: "places" // necessary for places input
+  }
+});
+
 
 Vue.use(require('vue-moment'));
 
@@ -32,6 +41,8 @@ import ParkingStatus from './components/ParkingStatus.vue'
 Vue.component('parking-status', ParkingStatus)
 import SelectedParkingSpace from './components/SelectedParkingSpace.vue'
 Vue.component('selected-parking-space', SelectedParkingSpace)
+import GoogleMap from './components/GoogleMap.vue'
+Vue.component('google-map', GoogleMap)
 
 import axios from "axios";
 Vue.prototype.$axios = axios.create({

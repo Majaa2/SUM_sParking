@@ -12,6 +12,8 @@ export default {
   data: () => ({
     //
   }),
-  
+  created() {
+      this.$store.dispatch('parking/authenticate')
+  },
 };
 </script>

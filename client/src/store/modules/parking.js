@@ -55,7 +55,7 @@ export default {
     actions: {
         async getParkingData() {
             let data = await ParkingService.getParkingSpaces();
-            // console.log(data)
+            console.log(data)
         },
         async getWeatherData(context) {
             let data = await ParkingService.getWeatherData();

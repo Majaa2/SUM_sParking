@@ -1,30 +1,91 @@
 <template>
+  <v-row dense>
+    <v-col cols="6">
+      <v-card max-width="500" class="mx-auto" color="#385F73" height="300" dark>
+        <gmap-map ref="mymap" :center="startLocation" :zoom="14" style="width: 100%; height: 300px">
+          <gmap-info-window
+            :options="infoOptions"
+            :position="infoPosition"
+            :opened="infoOpened"
+            @closeclick="infoOpened=false"
+          >{{infoContent}}</gmap-info-window>
 
-    <v-row dense>
-          <v-col cols="6">
-            <v-card
-              max-width="500"
-              class="mx-auto"
-              color="#385F73"
-              height="300"
-              dark
-            >
-              <v-card-title class="headline">Unlimited music now</v-card-title>
-  
-              <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.</v-card-subtitle>
-  
-            </v-card>
-          </v-col>
-          <selected-parking-space/>
-        </v-row>
+          <gmap-marker
+            v-for="(item, key) in coordinates"
+            :key="key"
+            :position="getPosition(item)"
+            :clickable="true"
+            @click="toggleInfo(item, key)"
+            :color=item.color
+          />
+        </gmap-map>
+      </v-card>
+    </v-col>
+    <selected-parking-space />
+  </v-row>
 </template>
 
 <script>
 export default {
-    data() {
-        return{
-
+  data() {
+    return {
+      startLocation: {
+        lat: 43.346279,
+        lng: 17.797821
+      },
+      coordinates: {
+        0: {
+          fullName: "Mladen Raguž",
+          lat: 43.34658412876357,
+          lng: 17.79782064601684
+        },
+        1: {
+          fullName: "Mladen Raguž",
+          lat: 43.34655412876357,
+          lng: 17.79781564601684,
+          color: 'green'
+        },
+        2: {
+          fullName: "Mladen Raguž",
+          lat: 43.34652412876357,
+          lng: 17.79781064601684
+        },
+        3: {
+          fullName: "Mladen Raguž",
+          lat: 43.34649412876357,
+          lng: 17.79780564601684
         }
+      },
+      infoPosition: null,
+      infoContent: null,
+      infoOpened: false,
+      infoCurrentKey: null,
+      infoOptions: {
+        pixelOffset: {
+          width: 0,
+          height: -35
+        }
+      }
+    };
+  },
+   methods: {
+    // receives a place object via the autocomplete component
+    getPosition: function(marker) {
+      return {
+        lat: parseFloat(marker.lat),
+        lng: parseFloat(marker.lng)
+      };
+    },
+    toggleInfo: function(marker, key) {
+      this.infoPosition = this.getPosition(marker);
+      this.infoContent = marker.fullName;
+      if (this.infoCurrentKey == key) {
+        this.infoOpened = !this.infoOpened;
+      } else {
+        this.infoOpened = true;
+        this.infoCurrentKey = key;
+      }
     }
-}
+  }
+};
 </script>
