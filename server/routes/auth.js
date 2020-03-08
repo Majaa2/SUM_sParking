@@ -41,7 +41,7 @@ module.exports = function (app) {
                         res.json({
                             success: false,
                             data: {
-                                msg: 'toast.login.pass'
+                                msg: 'There has been an error, please try again'
                             }
                         });
                     }
@@ -65,7 +65,7 @@ module.exports = function (app) {
                     res.json({
                         success: false,
                         data: {
-                            msg: 'toast.register.exists'
+                            msg: 'This user already exists'
                         }
                     });
                 }
@@ -74,7 +74,7 @@ module.exports = function (app) {
                         success: true,
                         data: {
                             user: result[0],
-                            msg: 'toast.register.succ'
+                            msg: 'The user has been created succesfully'
                         }
                     });}
 
@@ -82,7 +82,7 @@ module.exports = function (app) {
                 res.json({
                     success: false,
                     data: {
-                        msg: 'toast.register.exists'
+                        msg: 'There has been an error creating the user'
                     }
                 });
             }
@@ -104,14 +104,14 @@ module.exports = function (app) {
                     success: true,
                     data: {
                         user: result,
-                        msg: 'toast.passChange.succ'
+                        msg: 'Password changed succesfully'
                     }
                 });
             } else {
                 res.json({
                     success: false,
                     data: {
-                        msg: 'toast.passChange.err'
+                        msg: 'An error occured while changing the password'
                     }
                 });
             }

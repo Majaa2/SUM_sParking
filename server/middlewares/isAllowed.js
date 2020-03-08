@@ -1,15 +1,5 @@
 let rolePermissions = {
-    administrator: ['canGetLogs','canViewEvents', 'canCreateEvents', 'canEditEvents', 'canDeleteEvents', 
-                    'canGenerateTickets', 'canViewTickets','canScanTickets', 'canPrintTickets', 'canViewPrints', 'canGeneratePrints', 'canDeletePrints', 
-                    'canViewPrepaids', 'canCreatePrepaids', 'canEditPrepaids', 'canDeletePrepaids',
-                    'canViewSectors', 'canCreateSectors', 'canEditSectors', 'canDeleteSectors',
-                    'canViewSalesEvents', 'canViewUsersSales', 'canViewUserSales', 'canViewSalesAssignments', 'canViewSingleSaleAssignment', 'canViewAssignmentTickets',
-                    'canViewEventSales', 'canCreateSaleAssignment', 'canSellTickets', 'canDeleteSaleAssignments',
-                    'canViewGateReads','canChangeLang',
-                    'canRegisterUsers', 'canEditUser', 'canDeleteUser'],
-    sales: ['canScanTickets', 'canViewEvents','canGetLogs',
-            'canViewSalesmanEvents','canChangeLang', 'canViewUserSales', 'canViewSingleSaleAssignment','canViewSalesAssignments', 'canViewEventSales', 'canViewAssignmentTickets', 'canSellTickets'],
-    guest: ['canGetLogs','canScanTickets', 'canChangeLang','canViewEvents'],
+    administrator: ['canRegisterUsers', 'canEditUser', 'canDeleteUser'],
 }
 
 module.exports = function (actionName) {
