@@ -8,7 +8,8 @@ export default {
     namespaced: true,
     state: {
         isConnected: false,
-        socketMessage: ''
+        socketMessage: '',
+        weatherData: {}
     },
     getters: {
 
@@ -25,6 +26,9 @@ export default {
         SOCKET_MESSAGECHANNEL(state, message) {
             console.log(message);
             state.socketMessage = message
+        },
+        SET_WEATHER_DATA(state, data){
+            state.weatherData = data
         }
     },
     actions: {
@@ -32,9 +36,9 @@ export default {
             let data = await ParkingService.getParkingSpaces();
             console.log(data)
         },
-        async getWeatherData(){
+        async getWeatherData(context){
             let data = await ParkingService.getWeatherData();
-            console.log(data)
+            context.commit('SET_WEATHER_DATA',data)
         },
     }
 }

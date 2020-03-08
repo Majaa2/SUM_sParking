@@ -6,6 +6,8 @@ import vuetify from './plugins/vuetify'
 import socketio from 'socket.io-client';
 import VueSocketIO from 'vue-socket.io';
 
+Vue.use(require('vue-moment'));
+
 // export const SocketInstance = socketio('http://smart.sum.ba?withParkingSpaces=1s');
 // Vue.use(VueSocketIO, SocketInstance, store)
 

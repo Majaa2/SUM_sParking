@@ -6,31 +6,31 @@
     >
       <v-list-item two-line>
         <v-list-item-content>
-          <v-list-item-title class="headline">Mostar</v-list-item-title>
-          <v-list-item-subtitle>Pon, 12:30 , Sunčano</v-list-item-subtitle>
+          <v-list-item-title class="headline">{{weatherData.city}}</v-list-item-title>
+          <v-list-item-subtitle><span>{{ new Date() | moment("dddd, MMMM Do YYYY HH:mm") }},</span> <br> {{weatherData.weather}}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
   
-      <v-card-text>
+      <v-card-text style="background-color:lightblue">
         <v-row align="center">
           <v-col class="display-1" cols="6">
-            23&deg;C
+            {{weatherData.temperature}}&deg;C
           </v-col>
           <v-col cols="6">
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sun.png"
-              alt="Sunny image"
-              width="30"
+              :src= weatherData.icon
+              alt="Sunny image" 
+              width="100%"
             ></v-img>
           </v-col>
         </v-row>
       </v-card-text>
         <v-row no-gutters class="pl-5">
             <v-col cols="6">
-                <v-icon size="14">mdi-send</v-icon> 23 km
+                <v-icon size="14">mdi-send</v-icon> {{weatherData.wind}}kmh
             </v-col>
             <v-col cols="6">
-                <v-icon>mdi-cloud-download</v-icon> 48%
+                <v-icon>mdi-cloud-download</v-icon> {{weatherData.humidity}}%
             </v-col>
         </v-row> 
     </v-card>
@@ -38,7 +38,11 @@
 </template>
 
 <script>
+import {mapState, mapGetters} from 'vuex'
 export default {
-    name : 'weather-widget'
+    name : 'weather-widget',
+    computed: {
+    ...mapState('parking',['weatherData'])
+    }
 }
 </script>

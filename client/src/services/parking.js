@@ -12,7 +12,16 @@ export default {
     getWeatherData(){
         return axios.get('http://api.openweathermap.org/data/2.5/weather?q=Mostar&appid=d89ef06d2bccbb7f7fa14fa0bff0eb9e').then(response=>{
             if(response && response.status == 200){    
-                console.log(response.data)
+                let temp =response.data.main.temp - 273.15
+                let weatherData={
+                    city: response.data.name,
+                    weather: response.data.weather[0].description,
+                    temperature: Math.round(temp),
+                    humidity: response.data.main.humidity,
+                    wind: Math.round(response.data.wind.speed* 1.61), 
+                    icon: 'http://openweathermap.org/img/wn/'+response.data.weather[0].icon+'@2x.png'
+                }
+                return weatherData
             }
         })
     }
