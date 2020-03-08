@@ -12,6 +12,9 @@ export default {
 
   data: () => ({
     //
-  })
+  }),
+  mounted(){
+    this.$store.dispatch('parking/getWeatherData')
+  }
 };
 </script>
