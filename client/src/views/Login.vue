@@ -23,19 +23,21 @@
                     <img :src="require('@/assets/logo.png')" style="height:50px; width:90px;">
                     <v-divider></v-divider>
                   <v-text-field
+                  v-model="user.username"
                     label="Login"
                     name="login"
                     type="text"
                   ></v-text-field>
 
                   <v-text-field
+                  v-model="user.password"
                     id="password"
                     label="Password"
                     name="password"
                     type="password"
                   ></v-text-field>
                   
-                <v-btn color="primary" >Login</v-btn>
+                <v-btn color="primary" @click="login">Login</v-btn>
               
                 </v-form>
               </v-card-text>
@@ -50,7 +52,23 @@
         </div>
     </v-container>
 </template>
-
+<script>
+export default {
+  data(){
+    return{
+      user: {
+        username: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    login(){
+      this.$store.dispatch('parking/userLogin', this.user)
+    }
+  },
+}
+</script>
 <style>
 .cont{
     background-size: 100%;

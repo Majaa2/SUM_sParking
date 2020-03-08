@@ -1,5 +1,9 @@
 import Vue from "vue";
 import { cloneDeep } from "lodash";
+import User from "@/models/User";
+import createPersistedState from "vuex-persistedstate";
+import router from '@/router/index'
+
 
 //services
 import ParkingService from '../../services/parking.js'
@@ -9,12 +13,29 @@ export default {
     state: {
         isConnected: false,
         socketMessage: '',
-        weatherData: {}
+        weatherData: {},
+        authenticated: false,
+        user: {}
     },
     getters: {
-
+        isAuth: state => {
+            return state.authenticated;
+        },
+        currentUser(state) {
+            return state.user;
+        },
     },
     mutations: {
+        AUTHENTICATE(state) {
+            state.authenticated = true;
+        },
+        LOGIN(state) {
+            state.user = User.from(localStorage.id_token.replace("Bearer ", ""));
+        },
+        LOGOUT(state) {
+            state.authenticated = false;
+            state.user = null;
+        },
         SOCKET_CONNECT(state) {
             state.isConnected = true;
         },
@@ -32,13 +53,27 @@ export default {
         }
     },
     actions: {
-        async getParkingData(){
+        async getParkingData() {
             let data = await ParkingService.getParkingSpaces();
-            console.log(data)
+            // console.log(data)
         },
-        async getWeatherData(context){
+        async getWeatherData() {
             let data = await ParkingService.getWeatherData();
             context.commit('SET_WEATHER_DATA',data)
         },
-    }
+        logout(context) {
+            context.commit("LOGOUT");
+        },
+        async userLogin(context, user) {
+
+            let loggedUser = await ParkingService.userLogin(user)
+
+            context.commit("AUTHENTICATE")
+            context.commit("LOGIN");
+            if (loggedUser.role_name === 'admin') {
+                router.push('/');
+            }
+        }
+    },
+    plugins: [createPersistedState()]
 }
