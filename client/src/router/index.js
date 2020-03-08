@@ -30,7 +30,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  let user = store.state.authenticated;
+  let user = store.getters.isAuth;
   console.log(user)
   if (user === false && to.path !== '/login') { 
   	next('/login')
