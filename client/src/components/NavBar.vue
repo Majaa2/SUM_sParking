@@ -4,7 +4,7 @@
       v-model="drawer"
       app
     >
-    <user-info/>
+    <user-info :user='user'/>
     
     <weather-widget/>
     <v-divider></v-divider>
@@ -23,8 +23,8 @@
 
       <v-container
       >
-      <parking-indicator/>
-      <parking-status/>
+      <parking-indicator :selectedParking="selectedParking"/>
+      <parking-status :selectedParking='selectedParking'/>
       </v-container>
 
     <v-footer
@@ -37,13 +37,18 @@
 </template>
 
 <script>
+import {mapState, mapGetters} from 'vuex'
   export default {
     name : 'navbar',
     props: {
       source: String,
     },
+    computed:{
+      ...mapState('parking', ['user']),
+    },
     data: () => ({
       drawer: null,
+      selectedParking:{},
       picker: new Date().toISOString().substr(0, 10)
     }),
   }
