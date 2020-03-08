@@ -35,6 +35,7 @@
                     label="Password"
                     name="password"
                     type="password"
+                    @keyup.enter="login"
                   ></v-text-field>
                   
                 <v-btn color="primary" @click="login">Login</v-btn>
