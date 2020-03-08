@@ -12,14 +12,9 @@ export default {
   data: () => ({
     //
   }),
-<<<<<<< HEAD
   created() {
       this.$store.dispatch('parking/authenticate')
+      this.$store.dispatch('parking/getParkingData')
   },
-=======
-  created(){
-    this.$store.dispatch('parking/getParkingData')
-  }
->>>>>>> 0ca2a8e64427ca15345fdd225f89d140497d9ff9
 };
 </script>

@@ -66,11 +66,7 @@ export default {
     actions: {
         async getParkingData(context) {
             let data = await ParkingService.getParkingSpaces();
-<<<<<<< HEAD
-            console.log(data)
-=======
             context.commit('SET_PARKING_DATA',data)
->>>>>>> 0ca2a8e64427ca15345fdd225f89d140497d9ff9
         },
         async getWeatherData(context) {
             let data = await ParkingService.getWeatherData();
