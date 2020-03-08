@@ -1,5 +1,5 @@
 let rolePermissions = {
-    administrator: ['canRegisterUsers', 'canEditUser', 'canDeleteUser'],
+    admin: ['canRegisterUsers', 'canDeleteUser'],
 }
 
 module.exports = function (actionName) {

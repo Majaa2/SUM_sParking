@@ -10,7 +10,6 @@ module.exports = function (app) {
     
     app.use('/api', router);
     router.post('/login', (req, res) => {
-        console.log(req, 'i sta ia')
         //auth user
         db.sequelize.query('select u.*, r.name as role_name from users u inner join roles r on r.id = u.role_id where u.username = :username'
             ,{
@@ -50,7 +49,7 @@ module.exports = function (app) {
         });
     });
 
-    router.post('/register', ensureAuthenticated, isAllowed('canRegisterUsers'), (req, res) => {
+    router.post('/register',  (req, res) => {
         db.user.findOrCreate({where:{
                 username: req.body.username
             }, defaults: {

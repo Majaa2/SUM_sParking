@@ -12,5 +12,9 @@ export default {
   data: () => ({
     //
   }),
+  created(){
+    this.$store.dispatch('parking/getWeatherData')
+     this.$store.dispatch('parking/getParkingData')
+  }
 };
 </script>

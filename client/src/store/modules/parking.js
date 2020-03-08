@@ -31,6 +31,10 @@ export default {
         async getParkingData(){
             let data = await ParkingService.getParkingSpaces();
             console.log(data)
-        }
+        },
+        async getWeatherData(){
+            let data = await ParkingService.getWeatherData();
+            console.log(data)
+        },
     }
 }
