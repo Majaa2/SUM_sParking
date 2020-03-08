@@ -24,6 +24,7 @@
       <v-container
       >
       <parking-indicator/>
+      <parking-status/>
       </v-container>
 
     <v-footer

@@ -20,6 +20,7 @@
       </v-row>
     </v-container>
   </v-card>
+  
 </template>
 
 <script>
@@ -28,18 +29,18 @@ export default {
     return {
       cards: [
         {
-          title: "Skripta",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          flex: 4
-        },
-        {
           title: "Glavni",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+          src: require('@/assets/sum_glavni.jpg'),
           flex: 4
         },
         {
           title: "Igralište",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+          src: require('@/assets/sum_igraliste.jpg'),
+          flex: 4
+        },
+        {
+          title: "Skripta",
+          src: require('@/assets/sum_skripta.jpg'),
           flex: 4
         }
       ]

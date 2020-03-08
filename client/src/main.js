@@ -12,6 +12,10 @@ import WeatherWidget from './components/WeatherWidget.vue'
 Vue.component('weather-widget', WeatherWidget)
 import ParkingIndicator from './components/ParkingIndicator.vue'
 Vue.component('parking-indicator', ParkingIndicator)
+import ParkingStatus from './components/ParkingStatus.vue'
+Vue.component('parking-status', ParkingStatus)
+import SelectedParkingSpace from './components/SelectedParkingSpace.vue'
+Vue.component('selected-parking-space', SelectedParkingSpace)
 
 Vue.config.productionTip = false
 
