@@ -17,7 +17,13 @@ export default {
       this.$store.dispatch('parking/getParkingData')
       
        this.sockets.subscribe('parking-lot-state-change', (data) => {
-        this.$store.dispatch('parking/changeParkingState', data)
+         if(data.occupied){
+           this.$toaster.success('Parkirno mjesto '+data.id_parking_space+' je zauzeto')
+         }
+         else{
+           this.$toaster.success('Parkirno mjesto '+data.id_parking_space+' je oslobođeno')
+         }
+        //this.$store.dispatch('parking/changeParkingState', data)
     });
       this.$store.dispatch('parking/userRoles')
   },

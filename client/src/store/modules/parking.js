@@ -18,7 +18,8 @@ export default {
         authenticated: false,
         user: {},
         selectedParking: {},
-        roles: []
+        roles: [],
+        showReservations: false
     },
     getters: {
         isAuth: state => {
@@ -71,6 +72,9 @@ export default {
                     p.occupied = data.occupied
                 }
             })
+        },
+        SET_SHOW_RESERVATIONS(state){
+            state.showReservations = !state.showReservations 
         }
     },
     actions: {
@@ -112,7 +116,12 @@ export default {
         },
         changeParkingState(context, data){
             context.commit('CHANGE_PARKING_STATE', data)
-        }
+        },
+         changeView(context){
+             context.commit('SET_SHOW_RESERVATIONS')
+         }
+         
+     
     },
     plugins: [createPersistedState()]
 }

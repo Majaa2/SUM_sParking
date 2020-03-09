@@ -1,7 +1,7 @@
 <template>
   <v-row dense>
-    <v-col cols="6">
-      <v-card max-width="500" class="mx-auto" color="#385F73" height="300" dark>
+    <v-col cols="12">
+      <v-card class="mx-auto" color="#385F73" height="300" dark>
         <gmap-map ref="mymap" :center="startLocation" :zoom="14" style="width: 100%; height: 300px">
           <gmap-info-window
             :options="infoOptions"
@@ -21,7 +21,6 @@
         </gmap-map>
       </v-card>
     </v-col>
-    <selected-parking-space />
   </v-row>
 </template>
 
