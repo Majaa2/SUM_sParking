@@ -6,7 +6,12 @@ import vuetify from './plugins/vuetify'
 import socketio from 'socket.io-client';
 import VueSocketIO from 'vue-socket.io';
 import * as VueGoogleMaps from "vue2-google-maps";
+import Toaster from 'v-toaster'
+import 'v-toaster/dist/v-toaster.css'
 
+Vue.use(Toaster,{
+  timeout: 4000
+})
 Vue.use(VueGoogleMaps, {
   load: {
     key: "AIzaSyBTXC_FeumA9GLn-blssEZx9dZBy63gi6Y",
@@ -16,6 +21,7 @@ Vue.use(VueGoogleMaps, {
 
 
 Vue.use(require('vue-moment'));
+
 
 // export const SocketInstance = socketio('http://smart.sum.ba?withParkingSpaces=1s');
 // Vue.use(VueSocketIO, SocketInstance, store)
@@ -43,6 +49,8 @@ import SelectedParkingSpace from './components/SelectedParkingSpace.vue'
 Vue.component('selected-parking-space', SelectedParkingSpace)
 import GoogleMap from './components/GoogleMap.vue'
 Vue.component('google-map', GoogleMap)
+import ModalAddUser from './components/ModalAddUser.vue'
+Vue.component('modal-add-user', ModalAddUser)
 
 import axios from "axios";
 Vue.prototype.$axios = axios.create({

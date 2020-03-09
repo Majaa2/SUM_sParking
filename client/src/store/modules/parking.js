@@ -17,7 +17,8 @@ export default {
         parkingData: [],
         authenticated: false,
         user: {},
-        selectedParking: {}
+        selectedParking: {},
+        roles: []
     },
     getters: {
         isAuth: state => {
@@ -50,7 +51,6 @@ export default {
         },
 
         SOCKET_MESSAGECHANNEL(state, message) {
-            console.log(message);
             state.socketMessage = message
         },
         SET_WEATHER_DATA(state, data){
@@ -61,6 +61,9 @@ export default {
         },
         SET_SELECTED_PARKING(state,data){
             state.selectedParking = data
+        },
+        SET_USER_ROLES(state,roles){
+            state.roles = roles
         }
     },
     actions: {
@@ -81,6 +84,11 @@ export default {
         selectParking(context,data){
             context.commit("SET_SELECTED_PARKING",data)
         },
+        async userRoles(context){
+            let roles = await ParkingService.getRoles()
+            console.log(roles, 'action')
+            context.commit('SET_USER_ROLES',roles)
+        },
         async userLogin(context, user) {
 
             let loggedUser = await ParkingService.userLogin(user)
@@ -90,6 +98,10 @@ export default {
             if (loggedUser.role_name === 'admin') {
                 router.push('/');
             }
+        },
+        async createNewUser(context, newUser){
+            let response = await ParkingService.registerUser(newUser)
+            console.log(response)
         }
     },
     plugins: [createPersistedState()]

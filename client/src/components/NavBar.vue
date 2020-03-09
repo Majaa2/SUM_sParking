@@ -17,7 +17,9 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>SUM sParking</v-toolbar-title>
+      <v-toolbar-title>SUM sParking 
+      </v-toolbar-title>
+      <modal-add-user :userRoles='roles'/>
     </v-app-bar>
 
 
@@ -44,13 +46,14 @@ import {mapState, mapGetters} from 'vuex'
       source: String,
     },
     computed:{
-      ...mapState('parking', ['user']),
+      ...mapState('parking', ['user', 'roles']),
     },
     data: () => ({
       drawer: null,
       selectedParking:{},
-      picker: new Date().toISOString().substr(0, 10)
+      picker: new Date().toISOString().substr(0, 10),
     }),
+    
   }
 </script>
 
