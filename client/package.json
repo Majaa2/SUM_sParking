@@ -11,8 +11,6 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "jwt-decode": "^2.2.0",
-    "socker.io": "0.0.0-alpha-beta",
-    "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "uws": "^100.0.1",
     "vue": "^2.6.11",

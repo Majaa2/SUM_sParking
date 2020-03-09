@@ -15,6 +15,10 @@ export default {
   created() {
       this.$store.dispatch('parking/authenticate')
       this.$store.dispatch('parking/getParkingData')
+      
+       this.sockets.subscribe('parking-lot-state-change', (data) => {
+        this.$store.dispatch('parking/changeParkingState', data)
+    });
   },
 };
 </script>

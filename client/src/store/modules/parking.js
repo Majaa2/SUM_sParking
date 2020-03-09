@@ -50,7 +50,7 @@ export default {
         },
 
         SOCKET_MESSAGECHANNEL(state, message) {
-            console.log(message);
+            // console.log(message);
             state.socketMessage = message
         },
         SET_WEATHER_DATA(state, data){
@@ -90,6 +90,9 @@ export default {
             if (loggedUser.role_name === 'admin') {
                 router.push('/');
             }
+        },
+        changeParkingState(context, data){
+            context.commit()
         }
     },
     plugins: [createPersistedState()]

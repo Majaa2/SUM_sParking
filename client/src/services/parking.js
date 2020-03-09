@@ -67,8 +67,8 @@ export default {
         })
     },
     userLogin(user){
-        console.log(user)
-        return axios.post('http://localhost:3000/api/login', user).then(response=>{
+        // console.log(user)
+        return axios.post('/api/login', user).then(response=>{
             if(response.data.success) {
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
                 localStorage.setItem('id_token', 'Bearer ' + response.data.token);

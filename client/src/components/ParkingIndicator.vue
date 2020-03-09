@@ -71,7 +71,7 @@ export default {
     };
   },
   created() {
-    console.log(this.parkingData)
+    // console.log(this.parkingData)
   },
   methods:{
     selectParking(data){

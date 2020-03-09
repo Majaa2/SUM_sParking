@@ -17,17 +17,20 @@ Vue.use(VueGoogleMaps, {
 
 Vue.use(require('vue-moment'));
 
-// export const SocketInstance = socketio('http://smart.sum.ba?withParkingSpaces=1s');
-// Vue.use(VueSocketIO, SocketInstance, store)
+Vue.use(new VueSocketIO({
+  debug: true,
+  connection: 'http://smart.sum.ba/parking-events',
+  vuex: {
+      store,
+      actionPrefix: 'SOCKET_',
+      mutationPrefix: 'SOCKET_'
+  },
+}))
 
 // socketio.on('connection', function(socket){
 //   console.log('hi')
 // });
 
-// socketio.on('parking-lot-state-change', function(data){
-//     $scope.parkingSpaces.find(x => x.id === data.id_parking_space).occupied = data.occupied;
-//     console.log(data)
-//   })
 //components
 import UserInfo from './components/UserInfo.vue'
 Vue.component('user-info', UserInfo)
