@@ -100,14 +100,9 @@ export default {
                 router.push('/');
             }
         },
-<<<<<<< HEAD
-        changeParkingState(context, data){
-            context.commit()
-=======
         async createNewUser(context, newUser){
             let response = await ParkingService.registerUser(newUser)
             console.log(response)
->>>>>>> 23edc59ecd285d040dc07e61866e3e671c5b47ba
         }
     },
     plugins: [createPersistedState()]

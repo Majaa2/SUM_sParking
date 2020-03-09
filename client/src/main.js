@@ -32,12 +32,6 @@ Vue.use(new VueSocketIO({
   },
 }))
 
-// export const SocketInstance = socketio('http://smart.sum.ba?withParkingSpaces=1s');
-// Vue.use(VueSocketIO, SocketInstance, store)
-
-// socketio.on('connection', function(socket){
-//   console.log('hi')
-// });
 
 //components
 import UserInfo from './components/UserInfo.vue'
