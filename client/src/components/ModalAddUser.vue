@@ -3,9 +3,8 @@
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
         <v-btn class="mx-2" fab dark color="transparent" v-on="on" elevation="0">
-          <v-icon dark>mdi-plus</v-icon>
+          <v-icon dark>mdi-account-plus</v-icon>
         </v-btn>
-        <!-- <v-btn color="blue" dark  v-on="on">Add user</v-btn> -->
       </template>
       <v-card>
         <v-card-title>

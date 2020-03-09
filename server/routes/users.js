@@ -57,7 +57,7 @@ module.exports = function (app) {
 
     //Get all roles
 
-    router.get('/roles', ensureAuthenticated, (req, res) => {
+    router.get('/roles', (req, res) => {
         db.sequelize.query('select * from roles',{
             type: sequelize.QueryTypes.SELECT}).then(function (roles) {
             if (!roles) {

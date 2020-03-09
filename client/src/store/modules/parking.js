@@ -18,7 +18,8 @@ export default {
         authenticated: false,
         user: {},
         selectedParking: {},
-        roles: []
+        roles: [],
+        showReservations: false
     },
     getters: {
         isAuth: state => {
@@ -65,6 +66,9 @@ export default {
         },
         SET_USER_ROLES(state,roles){
             state.roles = roles
+        },
+        SET_SHOW_RESERVATIONS(state){
+            state.showReservations = !state.showReservations 
         }
     },
     actions: {
@@ -103,7 +107,12 @@ export default {
         async createNewUser(context, newUser){
             let response = await ParkingService.registerUser(newUser)
             console.log(response)
-        }
+        },
+         changeView(context){
+             context.commit('SET_SHOW_RESERVATIONS')
+         }
+         
+     
     },
     plugins: [createPersistedState()]
 }

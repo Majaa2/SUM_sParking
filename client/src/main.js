@@ -10,7 +10,7 @@ import Toaster from 'v-toaster'
 import 'v-toaster/dist/v-toaster.css'
 
 Vue.use(Toaster,{
-  timeout: 4000
+  timeout: 7000
 })
 Vue.use(VueGoogleMaps, {
   load: {
@@ -44,8 +44,6 @@ import ParkingIndicator from './components/ParkingIndicator.vue'
 Vue.component('parking-indicator', ParkingIndicator)
 import ParkingStatus from './components/ParkingStatus.vue'
 Vue.component('parking-status', ParkingStatus)
-import SelectedParkingSpace from './components/SelectedParkingSpace.vue'
-Vue.component('selected-parking-space', SelectedParkingSpace)
 import GoogleMap from './components/GoogleMap.vue'
 Vue.component('google-map', GoogleMap)
 import ModalAddUser from './components/ModalAddUser.vue'

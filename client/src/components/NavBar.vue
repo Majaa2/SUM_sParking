@@ -20,11 +20,18 @@
       <v-toolbar-title>SUM sParking 
       </v-toolbar-title>
       <modal-add-user :userRoles='roles'/>
+      <v-btn v-if="showReservations" class="mx-2" fab dark color="transparent" elevation="0" @click="showRes">
+        <v-icon dark>mdi-home</v-icon>
+    </v-btn>
+      <v-btn v-else class="mx-2" fab dark color="transparent" elevation="0" @click="showRes">
+        <v-icon dark>mdi-format-list-bulleted-square</v-icon>
+    </v-btn>
     </v-app-bar>
 
-
-      <v-container
-      >
+      <v-container v-if="showReservations">
+        <span>kdf</span>
+        </v-container>
+      <v-container v-else>
       <parking-indicator :selectedParking="selectedParking"/>
       <parking-status :selectedParking='selectedParking'/>
       </v-container>
@@ -46,14 +53,18 @@ import {mapState, mapGetters} from 'vuex'
       source: String,
     },
     computed:{
-      ...mapState('parking', ['user', 'roles']),
+      ...mapState('parking', ['user', 'roles', 'showReservations']),
     },
     data: () => ({
       drawer: null,
       selectedParking:{},
       picker: new Date().toISOString().substr(0, 10),
     }),
-    
+     methods: {
+      showRes(){
+        this.$store.dispatch('parking/changeView')
+     }
+    },
   }
 </script>
 
