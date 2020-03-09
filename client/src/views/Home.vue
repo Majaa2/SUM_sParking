@@ -19,6 +19,7 @@ export default {
        this.sockets.subscribe('parking-lot-state-change', (data) => {
         this.$store.dispatch('parking/changeParkingState', data)
     });
+      this.$store.dispatch('parking/userRoles')
   },
 };
 </script>

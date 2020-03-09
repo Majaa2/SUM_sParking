@@ -17,7 +17,8 @@ export default {
         parkingData: [],
         authenticated: false,
         user: {},
-        selectedParking: {}
+        selectedParking: {},
+        roles: []
     },
     getters: {
         isAuth: state => {
@@ -61,6 +62,9 @@ export default {
         },
         SET_SELECTED_PARKING(state,data){
             state.selectedParking = data
+        },
+        SET_USER_ROLES(state,roles){
+            state.roles = roles
         }
     },
     actions: {
@@ -81,6 +85,11 @@ export default {
         selectParking(context,data){
             context.commit("SET_SELECTED_PARKING",data)
         },
+        async userRoles(context){
+            let roles = await ParkingService.getRoles()
+            console.log(roles, 'action')
+            context.commit('SET_USER_ROLES',roles)
+        },
         async userLogin(context, user) {
 
             let loggedUser = await ParkingService.userLogin(user)
@@ -91,8 +100,14 @@ export default {
                 router.push('/');
             }
         },
+<<<<<<< HEAD
         changeParkingState(context, data){
             context.commit()
+=======
+        async createNewUser(context, newUser){
+            let response = await ParkingService.registerUser(newUser)
+            console.log(response)
+>>>>>>> 23edc59ecd285d040dc07e61866e3e671c5b47ba
         }
     },
     plugins: [createPersistedState()]

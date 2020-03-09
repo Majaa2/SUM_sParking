@@ -75,5 +75,19 @@ export default {
                 return response.data.data.user;
             }
         })
+    },
+    getRoles(){
+        return axios.get('/api/roles').then(response=>{
+            if(response.data.success){
+                return response.data.data
+            }
+        })
+    },
+    registerUser(newUser){
+        return axios.post('/api/register',newUser).then(response=>{
+            if(response.data.success){
+                return response.data
+            }
+        })
     }
 }
