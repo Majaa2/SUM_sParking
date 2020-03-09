@@ -6,15 +6,11 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        parkingSpaceId: {
+        parking_space_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'parkings',
-                key: 'id'
-            },
         },
-        userId:{
+        user_id:{
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -22,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
                 key: 'id'
             },
         },
-        rezervationTime: {
+        rezervation_time: {
             type: DataTypes.DATE,
             allowNull: false,
             validate:{

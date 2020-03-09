@@ -51,7 +51,6 @@ export default {
         },
 
         SOCKET_MESSAGECHANNEL(state, message) {
-            // console.log(message);
             state.socketMessage = message
         },
         SET_WEATHER_DATA(state, data){
@@ -65,6 +64,13 @@ export default {
         },
         SET_USER_ROLES(state,roles){
             state.roles = roles
+        },
+        CHANGE_PARKING_STATE(state, data){
+            state.parkingData.filter(p=>{
+                if(p.id == data.id_parking_space){
+                    p.occupied = data.occupied
+                }
+            })
         }
     },
     actions: {
@@ -102,7 +108,10 @@ export default {
         },
         async createNewUser(context, newUser){
             let response = await ParkingService.registerUser(newUser)
-            console.log(response)
+            // console.log(response)
+        },
+        changeParkingState(context, data){
+            context.commit('CHANGE_PARKING_STATE', data)
         }
     },
     plugins: [createPersistedState()]

@@ -17,7 +17,7 @@ export default {
                             lat: space.lat,
                             lng: space.lng,
                             parkingType: space.type,
-                            parkingSpaceTag: 'S-'+space.parking_space_name.substr(-1),
+                            parkingSpaceTag: 'S-'+space.id,
                             parkingSide: 'Skripta',
                             is_visible:space.is_visible
                         }
@@ -28,7 +28,7 @@ export default {
                             lat: space.lat,
                             lng: space.lng,
                             parkingType: space.type,
-                            parkingSpaceTag: 'I-'+space.parking_space_name.substr(-1),
+                            parkingSpaceTag: 'I-'+space.id,
                             parkingSide: 'Igralište',
                             is_visible:space.is_visible
                         }
@@ -39,7 +39,7 @@ export default {
                             lat: space.lat,
                             lng: space.lng,
                             parkingType: space.type,
-                            parkingSpaceTag: 'G-'+space.parking_space_name.substr(-1),
+                            parkingSpaceTag: 'G-'+space.id,
                             parkingSide: 'Glavni',
                             is_visible:space.is_visible
                         }
