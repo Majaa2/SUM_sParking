@@ -90,4 +90,25 @@ export default {
             }
         })
     },
+    getRezervations(){
+        return axios.get('/api/rezervations').then(response=>{
+            if(response.data.success){
+                return response.data.data
+            }
+        })
+    },
+    getUsers(){
+        return axios.get('/api/users').then(response=>{
+            if(response.data.success){
+                return response.data.data
+            }
+        })
+    },
+    deleteRezervation(rezervation){
+        return axios.post('/api/deleteRezervation', rezervation).then(response=>{
+            if(response.data.success){
+                return response.data
+            }
+        })
+    }
 }

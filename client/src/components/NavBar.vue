@@ -29,7 +29,7 @@
     </v-app-bar>
 
       <v-container v-if="showReservations">
-        <span>kdf</span>
+        <rezervations :rezervations="rezervations" :users="users" :parkingData="parkingData"/>
         </v-container>
       <v-container v-else>
       <parking-indicator :selectedParking="selectedParking"/>
@@ -53,7 +53,7 @@ import {mapState, mapGetters} from 'vuex'
       source: String,
     },
     computed:{
-      ...mapState('parking', ['user', 'roles', 'showReservations']),
+      ...mapState('parking', ['user', 'roles', 'showReservations','rezervations','users','parkingData']),
     },
     data: () => ({
       drawer: null,

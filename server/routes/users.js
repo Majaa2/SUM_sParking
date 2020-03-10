@@ -9,7 +9,7 @@ module.exports = function (app) {
     const isAllowed = require('../middlewares/isAllowed');
 
     app.use('/api', router);
-    router.get('/users', ensureAuthenticated, (req, res) => {
+    router.get('/users', (req, res) => {
         //auth user
        db.sequelize.query('select u.id, u.username, u.email, r.name as role_name, r.id as role_id from users u inner join roles r on u.role_id = r.id'
             ,{
@@ -54,7 +54,7 @@ module.exports = function (app) {
             }
         });
     });
-
+    
     //Get all roles
 
     router.get('/roles', (req, res) => {
