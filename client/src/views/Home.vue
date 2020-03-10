@@ -26,7 +26,7 @@ export default {
          else{
            this.$toaster.success('Parkirno mjesto '+data.id_parking_space+' je oslobođeno')
          }
-        //this.$store.dispatch('parking/changeParkingState', data)
+        this.$store.dispatch('parking/changeParkingState', data)
     });
       this.$store.dispatch('parking/userRoles')
   },

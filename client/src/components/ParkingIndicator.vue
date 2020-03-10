@@ -77,6 +77,9 @@ export default {
     selectParking(data){
       this.$store.dispatch("parking/selectParking",data)
     }
+  },
+  watch:{
+    
   }
 };
 </script>

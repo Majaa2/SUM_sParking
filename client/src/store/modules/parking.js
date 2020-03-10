@@ -69,6 +69,7 @@ export default {
             state.roles = roles
         },
         CHANGE_PARKING_STATE(state, data){
+            // console.log(data)
             state.parkingData.filter(p=>{
                 if(p.id == data.id_parking_space){
                     p.occupied = data.occupied
@@ -105,7 +106,7 @@ export default {
         },
         async userRoles(context){
             let roles = await ParkingService.getRoles()
-            console.log(roles, 'action')
+            // console.log(roles, 'action')
             context.commit('SET_USER_ROLES',roles)
         },
         async userLogin(context, user) {
