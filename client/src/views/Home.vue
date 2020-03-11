@@ -15,6 +15,9 @@ export default {
   created() {
       this.$store.dispatch('parking/authenticate')
       this.$store.dispatch('parking/getParkingData')
+      this.$store.dispatch('parking/getRezervations')
+      
+
       
        this.sockets.subscribe('parking-lot-state-change', (data) => {
          if(data.occupied){

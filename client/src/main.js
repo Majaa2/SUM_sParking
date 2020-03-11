@@ -48,6 +48,8 @@ import GoogleMap from './components/GoogleMap.vue'
 Vue.component('google-map', GoogleMap)
 import ModalAddUser from './components/ModalAddUser.vue'
 Vue.component('modal-add-user', ModalAddUser)
+import Rezervations from './components/Rezervations.vue'
+Vue.component('rezervations', Rezervations)
 
 import axios from "axios";
 Vue.prototype.$axios = axios.create({

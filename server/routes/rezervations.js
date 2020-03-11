@@ -64,5 +64,37 @@ module.exports = function (app) {
                 });
             }
         })
+    }),
+    router.post('/deleteRezervation/', (req, res) => {
+        db.sequelize.query('delete from rezervations where id = :ID'
+            ,{
+            replacements: {
+                ID: req.body.id
+            }, type: sequelize.QueryTypes.DELETE}).then((result) => {
+            if (result) {
+                res.json({
+                    success: true,
+                    data: {
+                        data: result,
+                        msg: 'Reservation has been deleted'
+                    }
+                });
+            } else {
+                res.json({
+                    success: false,
+                    data: {
+                        msg: 'There has been an error while deleting a reservation'
+                    }
+                });
+            }
+        }).catch(function (err) {
+            res.json({
+                success: false,
+                data: {
+                    msg: 'There has been an error while deleting a reservation',
+                    error: err
+                }
+            });
+        });
     });
 }

@@ -19,7 +19,9 @@ export default {
         user: {},
         selectedParking: {},
         roles: [],
-        showReservations: false
+        showReservations: false,
+        rezervations: [],
+        users: []
     },
     getters: {
         isAuth: state => {
@@ -76,6 +78,12 @@ export default {
         },
         SET_SHOW_RESERVATIONS(state){
             state.showReservations = !state.showReservations 
+        },
+        SET_REZERVATIONS(state,rezervations){
+            state.rezervations = rezervations
+        },
+        SET_USERS(state,users){
+            state.users = users
         }
     },
     actions: {
@@ -120,9 +128,23 @@ export default {
         },
          changeView(context){
              context.commit('SET_SHOW_RESERVATIONS')
-         }
+         },
+         async getRezervations(context){
+            let rezervations = await ParkingService.getRezervations()
+            context.commit('SET_REZERVATIONS',rezervations)
+        },
+        async getUsers(context){
+            let users = await ParkingService.getUsers()
+            context.commit('SET_USERS',users)
+        },
+        async deleteRezervation(context,rezervation){
+            let res = await ParkingService.deleteRezervation(rezervation)
+            console.log(res, 'store')
+            if (res.success){
+                context.dispatch('getRezervations')
+            }
+        }
          
-     
     },
     plugins: [createPersistedState()]
 }
