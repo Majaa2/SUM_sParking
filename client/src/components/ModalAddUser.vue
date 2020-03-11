@@ -14,26 +14,26 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-text-field label="Name*" v-model="newUser.username" required></v-text-field>
+                <v-text-field label="Korisničko ime" v-model="newUser.username" required></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="Email*" v-model="newUser.email" required></v-text-field>
+                <v-text-field label="Email" v-model="newUser.email" required></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="Password*" type="password" v-model="newUser.password" required></v-text-field>
+                <v-text-field label="Lozinka" type="password" v-model="newUser.password" required></v-text-field>
               </v-col>
               <v-col class="d-flex" cols="12" sm="6">
-                <v-select :items='userRoles' item-text="name" return-object v-model="selectedRole" label="Role"></v-select>
+                <v-select :items='userRoles' item-text="name" return-object v-model="selectedRole" label="Uloga"></v-select>
               </v-col>
             </v-row>
           </v-container>
-          <small>*indicates required field</small>
            
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="save()">Save</v-btn>
+          <v-btn color="blue darken-1" text @click="save()">Spremi</v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false">Zatvori</v-btn>
+          
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -59,8 +59,17 @@ export default {
   methods:{
       save(){
           this.newUser.role_id = this.selectedRole.id
-        this.$store.dispatch('parking/createNewUser',this.newUser)          
-        this.$toaster.success('Korisnik kreiran')
+          if(this.newUser.username=="" || this.newUser.password=="" || this.newUser.email==""){
+            this.$toaster.error('Popunite sva polja!')
+          }
+          else{
+            this.$store.dispatch('parking/createNewUser',this.newUser)          
+            this.$toaster.success('Korisnik kreiran')
+            this.newUser.username=''
+            this.newUser.password=''
+            this.newUser.email=''
+            this.dialog = false
+          }
       }
   }
 };

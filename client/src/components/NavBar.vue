@@ -20,12 +20,24 @@
       <v-toolbar-title>SUM sParking 
       </v-toolbar-title>
       <modal-add-user :userRoles='roles'/>
-      <v-btn v-if="showReservations" class="mx-2" fab dark color="transparent" elevation="0" @click="showRes">
+      
+      <v-tooltip bottom v-if="showReservations">
+      <template v-slot:activator="{ on }">
+       <v-btn  v-on = 'on' class="mx-2" fab dark color="transparent" elevation="0" @click="showRes">
+        
         <v-icon dark>mdi-home</v-icon>
     </v-btn>
-      <v-btn v-else class="mx-2" fab dark color="transparent" elevation="0" @click="showRes">
+      </template>
+      <span>Home</span>
+    </v-tooltip>
+      <v-tooltip bottom v-else>
+      <template v-slot:activator="{ on }">
+      <v-btn v-on = 'on' class="mx-2" fab dark color="transparent" elevation="0" @click="showRes">
         <v-icon dark>mdi-format-list-bulleted-square</v-icon>
     </v-btn>
+    </template>
+      <span>Pregled rezervacija</span>
+    </v-tooltip>
     </v-app-bar>
 
       <v-container v-if="showReservations">
@@ -33,7 +45,7 @@
         </v-container>
       <v-container v-else>
       <parking-indicator :selectedParking="selectedParking"/>
-      <parking-status :selectedParking='selectedParking'/>
+      <parking-status :selectedParking='selectedParking' :users='users'/>
       </v-container>
 
     <v-footer

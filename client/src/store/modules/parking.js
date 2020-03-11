@@ -123,6 +123,12 @@ export default {
             let response = await ParkingService.registerUser(newUser)
             // console.log(response)
         },
+        async addRezervation(context, newRezervation){
+            let response = await ParkingService.addRezervation(newRezervation)
+            if (response.success){
+                context.dispatch('getRezervations')
+            }
+        },
         changeParkingState(context, data){
             context.commit('CHANGE_PARKING_STATE', data)
         },

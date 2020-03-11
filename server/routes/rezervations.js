@@ -51,7 +51,7 @@ module.exports = function (app) {
                         success: true,
                         data: {
                             rezervation: result[0],
-                            msg: 'The user has been created succesfully'
+                            msg: 'The reservation has been created succesfully'
                         }
                     });}
 
@@ -59,7 +59,7 @@ module.exports = function (app) {
                 res.json({
                     success: false,
                     data: {
-                        msg: 'There has been an error creating the user'
+                        msg: 'There has been an error creating the reservation'
                     }
                 });
             }

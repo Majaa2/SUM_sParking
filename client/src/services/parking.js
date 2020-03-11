@@ -97,6 +97,13 @@ export default {
             }
         })
     },
+    addRezervation(newRezervation){
+        return axios.post('/api/rezervations',newRezervation).then(response=>{
+            if(response.data.success){
+                return response.data
+            }
+        })
+    },
     getUsers(){
         return axios.get('/api/users').then(response=>{
             if(response.data.success){
